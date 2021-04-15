@@ -1,5 +1,16 @@
 const fs = require('fs')
 const path = require('path')
+const fetch = require('node-fetch');
+
+fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(json => {
+        console.log("First user in the array:");
+        console.log(json[0]);
+        console.log("Name of the first user in the array:");
+        console.log(json[0].name);
+})
+
 
 const url = 'http://jsonplaceholder.typicode.com/posts';
   
@@ -34,7 +45,7 @@ const url = 'http://jsonplaceholder.typicode.com/posts';
 // // Calling that async function
 // getapi(api_url);
 
-const fetch(url)
+const newPosts = fetch(url)
 .then((resp) => resp.json())
 .then(function(data) {
   let posts = data.results;
@@ -52,7 +63,7 @@ throw err;
   });
 
 // Create and write to new file
-fs.writeFile(path.join(__dirname,'result','posts.json'), posts, err => {
+fs.writeFile(path.join(__dirname,'result','posts.json'), newPosts, err => {
   if (err) {
     console.error(err)
     return
