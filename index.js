@@ -2,13 +2,13 @@ const fs = require('fs')
 const path = require('path')
 const fetch = require('node-fetch');
 
-fetch('https://jsonplaceholder.typicode.com/users')
+const posters = fetch('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.json())
     .then(json => {
         console.log("First user in the array:");
         console.log(json[0]);
-        console.log("Name of the first user in the array:");
-        console.log(json[0].name);
+        console.log("Title of the first user in the array:");
+        console.log(json[0].title);
 })
 
 
@@ -63,7 +63,7 @@ throw err;
   });
 
 // Create and write to new file
-fs.writeFile(path.join(__dirname,'result','posts.json'), newPosts, err => {
+fs.writeFile(path.join(__dirname,'result','posts.json'), posters, err => {
   if (err) {
     console.error(err)
     return
