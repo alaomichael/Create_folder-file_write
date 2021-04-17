@@ -66,7 +66,7 @@ function jsonReader(filepath,cb) {
 
 
 // Create a server with the HTTP library
-http.createServer((req,res) =>{
+const server = http.createServer((req,res) =>{
 // fs.readFile('result/posts.json', (err,data) =>{
 //   if(err) throw err;
 //   res.writeHead(200,{'Content-Type': 'application/json'});
